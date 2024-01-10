@@ -1,0 +1,244 @@
+:root {
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+  --slate-950: #020617;
+
+  --primary-color: #1a202c;
+  --secondary-color: #d3cf92;
+  --accent-color: #cd8e93;
+
+  --bg-color: var(--slate-950);
+  --fg-color: var(--slate-50);
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  height: 100vh;
+  font-family: "Roboto Serif", sans-serif;
+  color: var(--fg-color);
+  background-image: linear-gradient(135deg, var(--slate-400), var(--slate-600));
+}
+
+body {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+}
+
+main {
+  padding: 32px 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+aside {
+  color: var(--sidebar-fg-color);
+  background-color: var(--sidebar-bg-color);
+
+  display: flex;
+  flex-direction: column;
+  padding: 32px 1rem;
+  gap: 1rem;
+}
+
+aside > section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+
+hr {
+  width: 95%;
+  border-radius: 8px;
+  border: 1px solid var(--color-neutral-600);
+  margin: 1rem auto;
+}
+
+button,
+fieldset,
+input,
+legend,
+select,
+textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  color: inherit;
+  border: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea {
+  /* border: 2px solid var(--color-neutral-600); */
+  background-color: var(--sidebar-color-over-background);
+  border-radius: 0.25rem;
+}
+
+input[type="text"],
+input[type="email"],
+select,
+textarea {
+  font-size:
+    1.25rem / 1.5 "Roboto Serif",
+    sans-serif;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+select {
+  min-width: 8rem;
+}
+
+input[type="radio"],
+input[type="checkbox"] {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: middle;
+}
+
+input[type="radio"] {
+  border-radius: 50%;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+  background-color: transparent;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.1em solid var(--color-neutral-400);
+
+  justify-self: center;
+  align-self: center;
+
+  display: grid;
+  place-content: center;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--accent-color);
+
+  transform-origin: center center;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="checkbox"]:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+
+  cursor: pointer;
+}
+
+input::placeholder,
+textarea::placeholder {
+  opacity: 1;
+  color: var(--color-neutral-400);
+}
+
+/* Buttons */
+button {
+  background-color: transparent;
+  border: none;
+  border-radius: 8px;
+  color: var(--fg-color);
+  font-family: inherit;
+  font-size: inherit;
+  padding: 4px;
+  cursor: pointer;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  transition: color 0.2s ease-in-out;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+button:hover {
+  color: var(--color-neutral-50);
+  background-color: var(--color-neutral-700);
+}
+
+button[type="submit"] {
+  background-color: var(--accent-color);
+}
+
+button[type="submit"]:hover {
+  background-color: hsl(213, 73%, 40%);
+}
+
+button:active {
+  background-color: var(--color-neutral-500);
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  /* Offset the shadow by the border width */
+  box-shadow: 0 0 0 2px var(--color-neutral-400);
+  border-radius: 0.25rem;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-neutral-400);
+}
