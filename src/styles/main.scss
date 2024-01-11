@@ -1,0 +1,66 @@
+main {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main__container {
+  flex-grow: 1;
+  display: grid;
+  grid-template-areas:
+    "current-condition current-condition"
+    "current-location current-details";
+  grid-template-rows: 200px 1fr;
+  grid-gap: 5rem;
+
+  #condition-icon {
+    align-self: flex-end;
+    grid-area: current-condition;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    font-size: 5rem;
+  }
+
+  .location {
+    justify-self: flex-end;
+    grid-area: current-location;
+  }
+
+  .current {
+    justify-self: flex-start;
+    grid-area: current-details;
+  }
+
+  .current__element-container {
+    display: grid;
+    grid-gap: 0rem 1rem;
+    padding: 1rem;
+
+    grid-template-areas:
+      "current-icon current-text"
+      "current-icon current-value";
+
+    .current__icon,
+    .material-symbols-rounded {
+      grid-area: current-icon;
+      font-size: 2rem;
+
+      justify-self: center;
+      align-self: center;
+    }
+
+    .current__text {
+      grid-area: current-text;
+      margin: 0;
+    }
+
+    .current__value {
+      grid-area: current-value;
+      margin: 0;
+    }
+  }
+}
