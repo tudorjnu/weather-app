@@ -1,5 +1,5 @@
 import "normalize.css";
-import "./styles/style.css";
+import "./styles/style.scss";
 import "./styles/global.css";
 import "./styles/main.scss";
 
