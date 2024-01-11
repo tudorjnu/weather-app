@@ -1,83 +1,69 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <title>Weather App</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@20..48,100..700,0..1"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL@20..48,100..700,0..1"
-      rel="stylesheet"
-    />
-    <link rel="icon" href="./assets/favicon.svg" />
-  </head>
-  <body>
-    <header>
-      <a href="./index.html">
-        <i id="home-icon" class="material-symbols-rounded">
-          partly_cloudy_day
-        </i>
-      </a>
 
-      <form id="from-search" class="search-bar" action="">
-        <input
-          type="search"
-          id="query"
-          name="q"
-          placeholder="Search..."
-          aria-label="Search through site content"
-        />
-        <button type="submit" id="search-button" class="button__outline">
-          <i class="material-symbols-rounded">search</i>
-        </button>
-      </form>
-    </header>
-    <main>
-      <div class="main__container">
-        <i id="condition-icon" class="material-symbols-rounded">sunny</i>
-        <div class="location">
-          <h4 class="location__name"></h4>
-          <h4 class="location__region"></h4>
-          <p class="location__country"></p>
-          <span class="location__localtime"></span>
+<head>
+  <title>Weather App</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Sharp:opsz,wght,FILL@20..48,100..700,0..1"
+    rel="stylesheet" />
+  <link rel="icon" href="./assets/favicon.svg" />
+</head>
+
+<body>
+  <header>
+    <a href="./index.html">
+      <i id="home-icon" class="material-symbols-rounded">
+        partly_cloudy_day
+      </i>
+    </a>
+
+    <form id="from-search" class="search-bar" action="">
+      <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content" />
+      <button type="submit" id="search-button" class="button__outline">
+        <i class="material-symbols-rounded">search</i>
+      </button>
+    </form>
+  </header>
+  <main>
+    <div class="main__container">
+      <i id="condition-icon" class="material-symbols-rounded">sunny</i>
+      <div class="location">
+        <h4 class="location__name"></h4>
+        <h4 class="location__region"></h4>
+        <p class="location__country"></p>
+        <span class="location__localtime"></span>
+      </div>
+      <div class="current">
+        <i class="material-symbols-rounded current__icon">thermostat</i>
+        <div class="current__element-container">
+          <p class="current__text">Feels Like</p>
+          <p id="feelslike" class="current__value"></p>
         </div>
-        <div class="current">
-          <div class="current__element-container">
-            <i class="material-symbols-rounded current__icon">thermostat</i>
-            <p class="current__text">Feels Like</p>
-            <p id="feelslike" class="current__value"></p>
-          </div>
-          <div class="current__element-container">
-            <i class="material-symbols-rounded current__icon">water</i>
-            <p class="current__text">Humidity</p>
-            <p id="humidity" class="current__value"></p>
-          </div>
-          <div class="current__element-container">
-            <i class="material-symbols-rounded current__icon">air</i>
-            <p class="current__text">Wind Speed</p>
-            <p id="wind-kph" class="current__value"></p>
-          </div>
+        <i class="material-symbols-rounded current__icon">water</i>
+        <div class="current__element-container">
+          <p class="current__text">Humidity</p>
+          <p id="humidity" class="current__value"></p>
+        </div>
+        <i class="material-symbols-rounded current__icon">air</i>
+        <div class="current__element-container">
+          <p class="current__text">Wind Speed</p>
+          <p id="wind-kph" class="current__value"></p>
         </div>
       </div>
-    </main>
-    <footer>
-      <p>
-        Powered by
-        <a href="https://www.weatherapi.com/" title="Free Weather API"
-          >WeatherAPI.com</a
-        >
-      </p>
-    </footer>
-  </body>
+    </div>
+  </main>
+  <footer>
+    <p>
+      Powered by
+      <a href="https://www.weatherapi.com/" title="Free Weather API">WeatherAPI.com</a>
+    </p>
+  </footer>
+</body>
+
 </html>

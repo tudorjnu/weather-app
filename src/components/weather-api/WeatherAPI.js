@@ -6,6 +6,7 @@ class WeatherAPI {
     this.weatherData = this.getWeather();
     console.log("weather app initialized");
 
+
     this.domElements = {
       location: {
         name: document.querySelector(".location__name"),
@@ -55,6 +56,11 @@ class WeatherAPI {
     }
   };
 
+  parseDate(dateString) {
+    const date = new Date(dateString)
+    return `${date.toDateString()}, ${date.toLocaleTimeString()}`;
+  }
+
   render() {
     const renderLocation = () => {
       this.domElements.location.name.textContent =
@@ -64,7 +70,7 @@ class WeatherAPI {
       this.domElements.location.country.textContent =
         this.weatherData.location.country;
       this.domElements.location.localtime.textContent =
-        this.weatherData.location.localtime;
+        this.parseDate(this.weatherData.location.localtime);
     };
     const renderCurrent = () => {
       this.domElements.current.feelslike.textContent = `${this.weatherData.current.feelslike_c} °C`;
