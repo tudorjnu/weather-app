@@ -1,7 +1,6 @@
 import "normalize.css";
-import "./styles/style.scss";
-import "./styles/global.css";
-import "./styles/main.scss";
+import "./styles/index.scss";
+// import "./styles/theme/styles.scss";
 
 import App from "./App";
 

@@ -1,0 +1,36 @@
+.button-solid {
+  background-color: $primary;
+
+  @if $theme =='dark' {
+
+    &:hover {
+      background-color: lighten($primary, 10%);
+    }
+
+    &:active {
+      background-color: lighten($primary, 20%);
+    }
+
+    &:disabled {
+      background-color: darken($primary, 20%);
+      cursor: not-allowed;
+      color: darken($primary, 20%);
+    }
+  }
+
+  @else {
+    &:hover {
+      background-color: darken($primary, 10%);
+    }
+
+    &:active {
+      background-color: darken($primary, 20%);
+    }
+
+    &:disabled {
+      background-color: lighten($primary, 20%);
+      cursor: not-allowed;
+      color: darken($primary, 20%);
+    }
+  }
+}

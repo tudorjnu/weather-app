@@ -82,24 +82,14 @@ class WeatherAPI {
         localtime: document.querySelector(".location__localtime"),
       },
       current: {
-        //   last_updated: document.querySelector(".current__last-updated"),
         //   temp_c: document.querySelector(".current__temp-c"),
         condition: {
           text: document.querySelector(".current__condition-text"),
-          //     icon: document.querySelector(".current__condition-icon"),
           code: document.querySelector(".current__condition-code"),
         },
         wind_kph: document.getElementById("wind-kph"),
-        //   wind_degree: document.querySelector(".current__wind-degree"),
-        //   wind_dir: document.querySelector(".current__wind-dir"),
-        //   pressure_mb: document.querySelector(".current__pressure-mb"),
-        //   precip_mm: document.querySelector(".current__precip-mm"),
         humidity: document.getElementById("humidity"),
-        //   cloud: document.querySelector(".current__cloud"),
         feelslike: document.getElementById("feelslike"),
-        //   vis_km: document.querySelector(".current__vis-km"),
-        //   uv: document.querySelector(".current__uv"),
-        //   gust_kph: document.querySelector(".current__gust-kph"),
       },
     };
     this.init();
