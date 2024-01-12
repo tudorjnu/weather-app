@@ -49,31 +49,14 @@ const weatherIconMap = {
   1282: "thunderstorm", // Moderate or heavy snow with thunder
 };
 
-function getLocation() {
-  return new Promise((resolve, reject) => {
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    } else {
-      reject("Geolocation is not supported by this browser.");
-    }
-  });
-}
-
-async function fetchLocation() {
-  try {
-    const position = await getLocation();
-    return position.coords;
-  } catch (error) {
-    console.log(error);
-  }
-}
-
 class WeatherAPI {
   constructor() {
     this.apiKey = "e22388f0771d490fab774625240801";
+    this.location = "London";
 
     this.domElements = {
       currentIcon: document.getElementById("condition-icon"),
+      searchButton: document.getElementById("search-button"),
 
       location: {
         name: document.querySelector(".location__name"),
@@ -92,6 +75,7 @@ class WeatherAPI {
         feelslike: document.getElementById("feelslike"),
       },
     };
+
     this.init();
     setInterval(this.update.bind(this), 1000 * 10); // 10 seconds
   }
@@ -111,6 +95,16 @@ class WeatherAPI {
     return `${date.toDateString()}, ${date.toLocaleTimeString()}`;
   }
 
+  bindKeyEvents() {
+    this.domElements.searchButton.addEventListener("click", (e) => {
+      e.preventDefault();
+      const city = document.getElementById("city").value;
+      console.log("City: " + city);
+      this.setLocation(city);
+      this.update();
+    });
+  }
+
   render() {
     const renderLocation = () => {
       this.domElements.location.name.textContent =
@@ -123,6 +117,7 @@ class WeatherAPI {
         this.weatherData.location.localtime,
       );
     };
+
     const renderCurrent = () => {
       this.domElements.current.feelslike.textContent = `${this.weatherData.current.feelslike_c} °C`;
       this.domElements.current.humidity.textContent = `${this.weatherData.current.humidity} %`;
@@ -149,18 +144,7 @@ class WeatherAPI {
   }
 
   async init() {
-    await fetchLocation()
-      .then((coords) => {
-        this.lat = coords.latitude;
-        this.lon = coords.longitude;
-        this.link = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${this.lat},${this.lon}`;
-      })
-      .catch((error) => {
-        console.log(error);
-        this.lat = 53.4084;
-        this.lon = 2.9916;
-      });
-    this.link = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${this.lat},${this.lon}`;
+    this.link = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${this.location}`;
     this.weatherData = await this.getWeather();
     this.render();
   }

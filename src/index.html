@@ -24,8 +24,8 @@
     </a>
 
     <form id="from-search" class="search-bar" action="">
-      <input type="search" id="query" name="q" placeholder="Search..." aria-label="Search through site content" />
-      <button type="submit" id="search-button" class="button__outline">
+      <input type="search" id="city" name="q" placeholder="Search..." aria-label="Search through site content" />
+      <button type="submit" id="search-button" class="button-outline">
         <i class="material-symbols-rounded">search</i>
       </button>
     </form>
@@ -33,6 +33,7 @@
   <main>
     <div class="main__container">
       <i id="condition-icon" class="material-symbols-rounded">sunny</i>
+      <p id="condition-text" class="condition-text"></p>
       <div class="location">
         <h4 class="location__name"></h4>
         <h4 class="location__region"></h4>
@@ -40,18 +41,18 @@
         <span class="location__localtime"></span>
       </div>
       <div class="current">
-        <i class="material-symbols-rounded current__icon">thermostat</i>
         <div class="current__element-container">
+          <i class="material-symbols-rounded current__icon">thermostat</i>
           <p class="current__text">Feels Like</p>
           <p id="feelslike" class="current__value"></p>
         </div>
-        <i class="material-symbols-rounded current__icon">water</i>
         <div class="current__element-container">
+          <i class="material-symbols-rounded current__icon">water</i>
           <p class="current__text">Humidity</p>
           <p id="humidity" class="current__value"></p>
         </div>
-        <i class="material-symbols-rounded current__icon">air</i>
         <div class="current__element-container">
+          <i class="material-symbols-rounded current__icon">air</i>
           <p class="current__text">Wind Speed</p>
           <p id="wind-kph" class="current__value"></p>
         </div>
