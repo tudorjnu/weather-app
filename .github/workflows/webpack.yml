@@ -1,4 +1,5 @@
 name: NodeJS with Webpack
+description: "A simple Weather App"
 
 on:
   push:
@@ -12,7 +13,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [18.x]
+        node-version: 18.x
 
     steps:
     - uses: actions/checkout@v3
@@ -26,3 +27,23 @@ jobs:
       run: |
         npm install
         webpack
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3 # This action checks out your repository
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.*' 
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Project
+        run: webpack  
+      - name: Build and Deploy
+        uses: JamesIves/github-pages-deploy-action@v4.4.3
+        with:
+          branch: gh-pages
+          folder: dist
