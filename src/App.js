@@ -66,6 +66,13 @@ async function getWeatherData(apiKey, city) {
   }
 }
 
+function getWeatherIcon(conditionCode, isDay) {
+  if (conditionCode === 1000) {
+    return isDay ? "sunny" : "nights_stay";
+  }
+  return weatherIconMap[conditionCode];
+}
+
 class App {
   constructor() {
     this.apiKey = "e22388f0771d490fab774625240801";
@@ -75,17 +82,7 @@ class App {
       currentIcon: document.getElementById("condition-icon"),
       searchForm: document.getElementById("search-form"),
 
-      location: {
-        name: document.querySelector(".location__name"),
-        region: document.querySelector(".location__region"),
-        country: document.querySelector(".location__country"),
-        localtime: document.querySelector(".location__localtime"),
-      },
       current: {
-        condition: {
-          text: document.querySelector(".current__condition-text"),
-          code: document.querySelector(".current__condition-code"),
-        },
         temperature: document.getElementById("temperature"),
         wind_kph: document.getElementById("wind-kph"),
         humidity: document.getElementById("humidity"),
@@ -99,6 +96,13 @@ class App {
   parseDate(dateString) {
     const date = new Date(dateString);
     return `${date.toDateString()}, ${date.getHours()}:${date.getMinutes()}`;
+  }
+
+  updateElement(elementId, newValue) {
+    const element = document.getElementById(elementId);
+    if (element) {
+      element.textContent = newValue;
+    }
   }
 
   bindKeyEvents() {
@@ -117,31 +121,37 @@ class App {
 
   render() {
     const renderLocation = () => {
-      this.domElements.location.name.textContent =
-        this.weatherData.location.name;
-      this.domElements.location.region.textContent =
-        this.weatherData.location.region;
-      this.domElements.location.country.textContent =
-        this.weatherData.location.country;
-      this.domElements.location.localtime.textContent = this.parseDate(
-        this.weatherData.location.localtime,
+      this.updateElement("location-name", this.weatherData.location.name);
+      this.updateElement("location-region", this.weatherData.location.region);
+      this.updateElement("location-country", this.weatherData.location.country);
+      this.updateElement(
+        "location-localtime",
+        this.parseDate(this.weatherData.location.localtime),
       );
     };
 
     const renderCurrent = () => {
-      this.domElements.current.temperature.textContent = `${this.weatherData.current.temp_c} °C`;
-      this.domElements.current.feelslike.textContent = `${this.weatherData.current.feelslike_c} °C`;
-      this.domElements.current.humidity.textContent = `${this.weatherData.current.humidity} %`;
-      this.domElements.current.wind_kph.textContent = `${this.weatherData.current.wind_kph} km/h`;
-      const currentConditionCode = this.weatherData.current.condition.code;
-      var currentConditionIcon = weatherIconMap[currentConditionCode];
-      const dayOrNight = this.weatherData.current.is_day ? "day" : "night";
+      this.updateElement(
+        "temperature",
+        this.weatherData.current.temp_c + " °C",
+      );
+      this.updateElement(
+        "feelslike",
+        this.weatherData.current.feelslike_c + " °C",
+      );
+      this.updateElement("humidity", this.weatherData.current.humidity + " %");
+      this.updateElement(
+        "wind-kph",
+        this.weatherData.current.wind_kph + " km/h",
+      );
 
-      currentConditionIcon =
-        currentConditionIcon === "partly_cloudy"
-          ? "partly_cloudy_" + dayOrNight
-          : currentConditionIcon;
-      this.domElements.currentIcon.innerText = currentConditionIcon;
+      this.updateElement(
+        "condition-icon",
+        getWeatherIcon(
+          this.weatherData.current.condition.code,
+          this.weatherData.current.is_day,
+        ),
+      );
     };
 
     renderLocation();
