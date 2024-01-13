@@ -86,6 +86,7 @@ class App {
           text: document.querySelector(".current__condition-text"),
           code: document.querySelector(".current__condition-code"),
         },
+        temperature: document.getElementById("temperature"),
         wind_kph: document.getElementById("wind-kph"),
         humidity: document.getElementById("humidity"),
         feelslike: document.getElementById("feelslike"),
@@ -111,10 +112,10 @@ class App {
       e.preventDefault();
       const city = document.getElementById("search-input").value;
       if (!this.isValidCity(city)) {
-        this.location = city;
-        this.update();
-        this.domElements.searchForm.reset();
+        return;
       }
+      this.location = city;
+      this.update();
       this.domElements.searchForm.reset();
     });
   }
@@ -133,6 +134,7 @@ class App {
     };
 
     const renderCurrent = () => {
+      this.domElements.current.temperature.textContent = `${this.weatherData.current.temp_c} °C`;
       this.domElements.current.feelslike.textContent = `${this.weatherData.current.feelslike_c} °C`;
       this.domElements.current.humidity.textContent = `${this.weatherData.current.humidity} %`;
       this.domElements.current.wind_kph.textContent = `${this.weatherData.current.wind_kph} km/h`;
