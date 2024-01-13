@@ -94,7 +94,6 @@ class App {
     };
 
     this.init();
-    // setInterval(this.update.bind(this), 1000 * 60 * 5); // ms * s * m
   }
 
   parseDate(dateString) {
@@ -102,23 +101,16 @@ class App {
     return `${date.toDateString()}, ${date.getHours()}:${date.getMinutes()}`;
   }
 
-  isValidCity(city) {
-    const weatherData = getWeatherData(this.apiKey, city);
-    return weatherData.length !== 0;
-  }
-
   bindKeyEvents() {
-    this.domElements.searchForm.addEventListener("submit", (e) => {
+    this.domElements.searchForm.addEventListener("submit", async (e) => {
       e.preventDefault();
       const city = document.getElementById("search-input").value;
-      if (!this.isValidCity(city)) {
-        return;
-      }
-      const data = getWeatherData(this.apiKey, city);
+      const data = await getWeatherData(this.apiKey, city);
       if (data !== null) {
         this.location = city;
-        this.domElements.searchForm.reset();
+        this.weatherData = data;
         this.render();
+        this.domElements.searchForm.reset();
       }
     });
   }
