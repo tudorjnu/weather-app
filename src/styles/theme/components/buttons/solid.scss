@@ -1,5 +1,7 @@
 .button-solid {
-  background-color: $primary;
+  background-color: $secondary;
+  border: $base-border-thickness solid $secondary;
+  color: lighten($secondary, 60%);
 
   @if $theme =='dark' {
 
@@ -20,17 +22,17 @@
 
   @else {
     &:hover {
-      background-color: darken($primary, 10%);
+      background-color: darken($secondary, 10%);
     }
 
     &:active {
-      background-color: darken($primary, 20%);
+      background-color: darken($secondary, 20%);
     }
 
     &:disabled {
-      background-color: lighten($primary, 20%);
+      background-color: lighten($secondary, 20%);
       cursor: not-allowed;
-      color: darken($primary, 20%);
+      color: darken($secondary, 20%);
     }
   }
 }

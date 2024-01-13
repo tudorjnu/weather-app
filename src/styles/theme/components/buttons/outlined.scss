@@ -1,18 +1,18 @@
 .button-outlined {
-  border-color: darken($primary, 20%);
-  color: darken($primary, 20%);
+  border: $base-border-thickness solid darken($secondary, 20%);
+  color: darken($secondary, 20%);
 
   @if $theme =='dark' {
     &:hover {
-      background-color: darken($primary, 40%);
+      background-color: darken($secondary, 40%);
     }
 
     &:active {
-      background-color: darken($primary, 30%);
+      background-color: darken($secondary, 30%);
     }
 
     &:disabled {
-      background-color: darken($primary, 20%);
+      background-color: darken($secondary, 20%);
       color: lighten($primary, 20%);
 
       cursor: not-allowed;
@@ -20,19 +20,16 @@
   }
 
   @else {
-
     &:hover {
-      background-color: lighten($primary, 40%);
+      background-color: lighten($secondary, 50%);
     }
 
     &:active {
-      background-color: lighten($primary, 30%);
+      background-color: lighten($secondary, 40%);
     }
 
     &:disabled {
-      background-color: lighten($primary, 20%);
-      color: lighten($primary, 20%);
-
+      color: lighten($secondary, 20%);
       cursor: not-allowed;
     }
   }

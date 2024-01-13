@@ -56,7 +56,7 @@ class WeatherAPI {
 
     this.domElements = {
       currentIcon: document.getElementById("condition-icon"),
-      searchButton: document.getElementById("search-button"),
+      searchForm: document.getElementById("search-form"),
 
       location: {
         name: document.querySelector(".location__name"),
@@ -77,7 +77,7 @@ class WeatherAPI {
     };
 
     this.init();
-    setInterval(this.update.bind(this), 1000 * 10); // 10 seconds
+    setInterval(this.update.bind(this), 1000 * 60 * 5); // ms * s * m
   }
 
   getWeather = async () => {
@@ -92,16 +92,16 @@ class WeatherAPI {
 
   parseDate(dateString) {
     const date = new Date(dateString);
-    return `${date.toDateString()}, ${date.toLocaleTimeString()}`;
+    return `${date.toDateString()}, ${date.getHours()}:${date.getMinutes()}`;
   }
 
   bindKeyEvents() {
-    this.domElements.searchButton.addEventListener("click", (e) => {
+    this.domElements.searchForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const city = document.getElementById("city").value;
-      console.log("City: " + city);
+      const city = document.getElementById("search-input").value;
       this.setLocation(city);
       this.update();
+      this.domElements.searchForm.reset();
     });
   }
 
@@ -146,6 +146,7 @@ class WeatherAPI {
   async init() {
     this.link = `https://api.weatherapi.com/v1/current.json?key=${this.apiKey}&q=${this.location}`;
     this.weatherData = await this.getWeather();
+    this.bindKeyEvents();
     this.render();
   }
 
