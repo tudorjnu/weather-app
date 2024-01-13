@@ -23,7 +23,7 @@ main {
     align-items: center;
     gap: 1rem;
 
-    font-size: 5rem;
+    font-size: 7rem;
   }
 
   #condition-text {
@@ -38,13 +38,13 @@ main {
 
     justify-self: flex-end;
     grid-area: current-location;
-    width: clamp(200px, 30vw, 400px);
+    width: 300px;
   }
 
   .current {
     justify-self: flex-start;
     grid-area: current-details;
-    width: clamp(200px, 30vw, 400px);
+    width: 300px;
 
     display: flex;
     flex-direction: column;
