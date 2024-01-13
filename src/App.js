@@ -114,9 +114,12 @@ class App {
       if (!this.isValidCity(city)) {
         return;
       }
-      this.location = city;
-      this.update();
-      this.domElements.searchForm.reset();
+      const data = getWeatherData(this.apiKey, city);
+      if (data !== null) {
+        this.location = city;
+        this.domElements.searchForm.reset();
+        this.render();
+      }
     });
   }
 
@@ -156,11 +159,6 @@ class App {
   async init() {
     this.weatherData = await getWeatherData(this.apiKey, this.location);
     this.bindKeyEvents();
-    this.render();
-  }
-
-  async update() {
-    this.weatherData = await getWeatherData(this.apiKey, this.location);
     this.render();
   }
 }
