@@ -1,53 +1,105 @@
 const weatherIconMap = {
-  1000: "sunny", // or 'nights_stay' for night Clear
-  1003: "partly_cloudy", // Partly cloudy
-  1006: "cloud", // Cloudy
-  1009: "cloud", // Overcast
-  1030: "foggy", // Mist
-  1063: "umbrella", // Patchy rain possible
-  1066: "ac_unit", // Patchy snow possible
-  1069: "ac_unit", // Patchy sleet possible
-  1072: "ac_unit", // Patchy freezing drizzle possible
-  1087: "thunderstorm", // Thundery outbreaks possible
-  1114: "ac_unit", // Blowing snow
-  1117: "ac_unit", // Blizzard
-  1135: "foggy", // Fog
-  1147: "foggy", // Freezing fog
-  1150: "grain", // Patchy light drizzle
-  1153: "grain", // Light drizzle
-  1168: "ac_unit", // Freezing drizzle
-  1171: "ac_unit", // Heavy freezing drizzle
-  1180: "umbrella", // Patchy light rain
-  1183: "umbrella", // Light rain
-  1186: "umbrella", // Moderate rain at times
-  1189: "umbrella", // Moderate rain
-  1192: "umbrella", // Heavy rain at times
-  1195: "umbrella", // Heavy rain
-  1198: "ac_unit", // Light freezing rain
-  1201: "ac_unit", // Moderate or heavy freezing rain
-  1204: "ac_unit", // Light sleet
-  1207: "ac_unit", // Moderate or heavy sleet
-  1210: "ac_unit", // Patchy light snow
-  1213: "ac_unit", // Light snow
-  1216: "ac_unit", // Patchy moderate snow
-  1219: "ac_unit", // Moderate snow
-  1222: "ac_unit", // Patchy heavy snow
-  1225: "ac_unit", // Heavy snow
-  1237: "ac_unit", // Ice pellets
-  1240: "umbrella", // Light rain shower
-  1243: "umbrella", // Moderate or heavy rain shower
-  1246: "umbrella", // Torrential rain shower
-  1249: "ac_unit", // Light sleet showers
-  1252: "ac_unit", // Moderate or heavy sleet showers
-  1255: "ac_unit", // Light snow showers
-  1258: "ac_unit", // Moderate or heavy snow showers
-  1261: "ac_unit", // Light showers of ice pellets
-  1264: "ac_unit", // Moderate or heavy showers of ice pellets
-  1273: "thunderstorm", // Patchy light rain with thunder
-  1276: "thunderstorm", // Moderate or heavy rain with thunder
-  1279: "thunderstorm", // Patchy light snow with thunder
-  1282: "thunderstorm", // Moderate or heavy snow with thunder
-};
+  day: {
+    1000: "sunny", // or 'nights_stay' for night Clear               
+    1003: "partly_cloudy_day", // Partly cloudy                          
+    1006: "cloud", // Cloudy                                         
+    1009: "cloud", // Overcast                                       
+    1030: "foggy", // Mist                                           
+    1063: "umbrella", // Patchy rain possible                        
+    1066: "ac_unit", // Patchy snow possible                         
+    1069: "ac_unit", // Patchy sleet possible                        
+    1072: "ac_unit", // Patchy freezing drizzle possible             
+    1087: "thunderstorm", // Thundery outbreaks possible             
+    1114: "ac_unit", // Blowing snow                                 
+    1117: "ac_unit", // Blizzard                                     
+    1135: "foggy", // Fog                                            
+    1147: "foggy", // Freezing fog                                   
+    1150: "grain", // Patchy light drizzle                           
+    1153: "grain", // Light drizzle                                  
+    1168: "ac_unit", // Freezing drizzle                             
+    1171: "ac_unit", // Heavy freezing drizzle                       
+    1180: "umbrella", // Patchy light rain                           
+    1183: "umbrella", // Light rain                                  
+    1186: "umbrella", // Moderate rain at times                      
+    1189: "umbrella", // Moderate rain                               
+    1192: "umbrella", // Heavy rain at times                         
+    1195: "umbrella", // Heavy rain                                  
+    1198: "ac_unit", // Light freezing rain                          
+    1201: "ac_unit", // Moderate or heavy freezing rain              
+    1204: "ac_unit", // Light sleet                                  
+    1207: "ac_unit", // Moderate or heavy sleet                      
+    1210: "ac_unit", // Patchy light snow                            
+    1213: "ac_unit", // Light snow                                   
+    1216: "ac_unit", // Patchy moderate snow                         
+    1219: "ac_unit", // Moderate snow                                
+    1222: "ac_unit", // Patchy heavy snow                            
+    1225: "ac_unit", // Heavy snow                                   
+    1237: "ac_unit", // Ice pellets                                  
+    1240: "umbrella", // Light rain shower                           
+    1243: "umbrella", // Moderate or heavy rain shower               
+    1246: "umbrella", // Torrential rain shower                      
+    1249: "ac_unit", // Light sleet showers                          
+    1252: "ac_unit", // Moderate or heavy sleet showers              
+    1255: "ac_unit", // Light snow showers                           
+    1258: "ac_unit", // Moderate or heavy snow showers               
+    1261: "ac_unit", // Light showers of ice pellets                 
+    1264: "ac_unit", // Moderate or heavy showers of ice pellets     
+    1273: "thunderstorm", // Patchy light rain with thunder          
+    1276: "thunderstorm", // Moderate or heavy rain with thunder     
+    1279: "thunderstorm", // Patchy light snow with thunder          
+    1282: "thunderstorm", // Moderate or heavy snow with thunder     
+  },
+  night: {
+    1000: "clear_night", // for night Clear               
+    1003: "partly_cloudy_night", // Partly cloudy                          
+    1006: "cloud", // Cloudy                                         
+    1009: "cloud", // Overcast                                       
+    1030: "foggy", // Mist                                           
+    1063: "umbrella", // Patchy rain possible                        
+    1066: "ac_unit", // Patchy snow possible                         
+    1069: "ac_unit", // Patchy sleet possible                        
+    1072: "ac_unit", // Patchy freezing drizzle possible             
+    1087: "thunderstorm", // Thundery outbreaks possible             
+    1114: "ac_unit", // Blowing snow                                 
+    1117: "ac_unit", // Blizzard                                     
+    1135: "foggy", // Fog                                            
+    1147: "foggy", // Freezing fog                                   
+    1150: "grain", // Patchy light drizzle                           
+    1153: "grain", // Light drizzle                                  
+    1168: "ac_unit", // Freezing drizzle                             
+    1171: "ac_unit", // Heavy freezing drizzle                       
+    1180: "umbrella", // Patchy light rain                           
+    1183: "umbrella", // Light rain                                  
+    1186: "umbrella", // Moderate rain at times                      
+    1189: "umbrella", // Moderate rain                               
+    1192: "umbrella", // Heavy rain at times                         
+    1195: "umbrella", // Heavy rain                                  
+    1198: "ac_unit", // Light freezing rain                          
+    1201: "ac_unit", // Moderate or heavy freezing rain              
+    1204: "ac_unit", // Light sleet                                  
+    1207: "ac_unit", // Moderate or heavy sleet                      
+    1210: "ac_unit", // Patchy light snow                            
+    1213: "ac_unit", // Light snow                                   
+    1216: "ac_unit", // Patchy moderate snow                         
+    1219: "ac_unit", // Moderate snow                                
+    1222: "ac_unit", // Patchy heavy snow                            
+    1225: "ac_unit", // Heavy snow                                   
+    1237: "ac_unit", // Ice pellets                                  
+    1240: "umbrella", // Light rain shower                           
+    1243: "umbrella", // Moderate or heavy rain shower               
+    1246: "umbrella", // Torrential rain shower                      
+    1249: "ac_unit", // Light sleet showers                          
+    1252: "ac_unit", // Moderate or heavy sleet showers              
+    1255: "ac_unit", // Light snow showers                           
+    1258: "ac_unit", // Moderate or heavy snow showers               
+    1261: "ac_unit", // Light showers of ice pellets                 
+    1264: "ac_unit", // Moderate or heavy showers of ice pellets     
+    1273: "thunderstorm", // Patchy light rain with thunder          
+    1276: "thunderstorm", // Moderate or heavy rain with thunder     
+    1279: "thunderstorm", // Patchy light snow with thunder          
+
+  },
+}
 
 async function getWeatherData(apiKey, city) {
   try {
@@ -67,10 +119,8 @@ async function getWeatherData(apiKey, city) {
 }
 
 function getWeatherIcon(conditionCode, isDay) {
-  if (conditionCode === 1000) {
-    return isDay ? "sunny" : "nights_stay";
-  }
-  return weatherIconMap[conditionCode];
+  const dayOrNight = isDay ? "day" : "night";
+  return weatherIconMap[dayOrNight][conditionCode];
 }
 
 class App {
